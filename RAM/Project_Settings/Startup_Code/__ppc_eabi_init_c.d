@@ -1,10 +1,10 @@
-Project_Settings/Startup_Code/__ppc_eabi_init_c.obj: D:\我的文档\Freescale\workplace\Motor\ test_one_capture_one_save\Project_Settings\Startup_Code\__ppc_eabi_init.c \
+Project_Settings/Startup_Code/__ppc_eabi_init_c.obj: D:\我的文档\Freescale\workplace\MotorTester\Project_Settings\Startup_Code\__ppc_eabi_init.c \
 	D:\Freescale\CW\ MCU\ v10.6\MCU\PA_Support\ewl\EWL_C\include\lib_ewl.prefix \
 	D:\Freescale\CW\ MCU\ v10.6\MCU\PA_Support\ewl\EWL_C\include\common.prefix \
 	D:\Freescale\CW\ MCU\ v10.6\MCU\PA_Support\ewl\EWL_C\include\ewl_c_version.h \
-	D:\我的文档\Freescale\workplace\Motor\ test_one_capture_one_save\Prefix\MPC5604B_RAM_VLE.prefix \
-	D:\我的文档\Freescale\workplace\Motor\ test_one_capture_one_save\Project_Headers\MPC5604B.h \
-	D:\我的文档\Freescale\workplace\Motor\ test_one_capture_one_save\Project_Headers\typedefs.h \
+	D:\我的文档\Freescale\workplace\MotorTester\Prefix\MPC5604B_RAM_VLE.prefix \
+	D:\我的文档\Freescale\workplace\MotorTester\Project_Headers\MPC5604B.h \
+	D:\我的文档\Freescale\workplace\MotorTester\Project_Headers\typedefs.h \
 	D:\Freescale\CW\ MCU\ v10.6\MCU\PA_Support\ewl\EWL_C\include\stdint.h \
 	D:\Freescale\CW\ MCU\ v10.6\MCU\PA_Support\ewl\EWL_C\include\ansi_parms.h \
 	D:\Freescale\CW\ MCU\ v10.6\MCU\PA_Support\ewl\EWL_C\include\ewlGlobals.h \

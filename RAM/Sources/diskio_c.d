@@ -1,14 +1,14 @@
-Sources/diskio_c.obj: D:\我的文档\Freescale\workplace\Motor\ test_one_capture_one_save\Sources\diskio.c \
+Sources/diskio_c.obj: D:\我的文档\Freescale\workplace\MotorTester\Sources\diskio.c \
 	D:\Freescale\CW\ MCU\ v10.6\MCU\PA_Support\ewl\EWL_C\include\lib_ewl.prefix \
 	D:\Freescale\CW\ MCU\ v10.6\MCU\PA_Support\ewl\EWL_C\include\common.prefix \
 	D:\Freescale\CW\ MCU\ v10.6\MCU\PA_Support\ewl\EWL_C\include\ewl_c_version.h \
-	D:\我的文档\Freescale\workplace\Motor\ test_one_capture_one_save\Prefix\MPC5604B_RAM_VLE.prefix \
-	D:\我的文档\Freescale\workplace\Motor\ test_one_capture_one_save\Project_Headers\diskio.h \
-	D:\我的文档\Freescale\workplace\Motor\ test_one_capture_one_save\Project_Headers\integer.h \
-	D:\我的文档\Freescale\workplace\Motor\ test_one_capture_one_save\Project_Headers\includes.h \
-	D:\我的文档\Freescale\workplace\Motor\ test_one_capture_one_save\Project_Headers\sd.h \
-	D:\我的文档\Freescale\workplace\Motor\ test_one_capture_one_save\Project_Headers\MPC5604B.h \
-	D:\我的文档\Freescale\workplace\Motor\ test_one_capture_one_save\Project_Headers\typedefs.h \
+	D:\我的文档\Freescale\workplace\MotorTester\Prefix\MPC5604B_RAM_VLE.prefix \
+	D:\我的文档\Freescale\workplace\MotorTester\Project_Headers\diskio.h \
+	D:\我的文档\Freescale\workplace\MotorTester\Project_Headers\integer.h \
+	D:\我的文档\Freescale\workplace\MotorTester\Project_Headers\includes.h \
+	D:\我的文档\Freescale\workplace\MotorTester\Project_Headers\sd_hardware.h \
+	D:\我的文档\Freescale\workplace\MotorTester\Project_Headers\MPC5604B.h \
+	D:\我的文档\Freescale\workplace\MotorTester\Project_Headers\typedefs.h \
 	D:\Freescale\CW\ MCU\ v10.6\MCU\PA_Support\ewl\EWL_C\include\stdint.h \
 	D:\Freescale\CW\ MCU\ v10.6\MCU\PA_Support\ewl\EWL_C\include\ansi_parms.h \
 	D:\Freescale\CW\ MCU\ v10.6\MCU\PA_Support\ewl\EWL_C\include\ewlGlobals.h \

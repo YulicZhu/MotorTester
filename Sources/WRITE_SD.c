@@ -6,70 +6,40 @@
  *      Author: Yulic_zhu
  */
 #include "MPC5604B.h"
-#include "SD.h"
+#include "SD_hardware.h"
 #include "WRITE_SD.h"
 #include "includes.h"
 #include "ff.h"
 #include "stdio.h"
-FATFS fatfs2;
-uint16_t m;
-uint16_t error;
-struct buff{
-	char clock[11];
-	char current_val[5];
-	char volt_val[5];
-	char mscounter[11];
-
-}*BUFFER;
 FIL fil;
 TCHAR tchar[30];
-
-/************************************************************/
-/*                          主函数                          */
-/************************************************************/
-
 void init_SD_FatFs(){
-	SD_Init();
+	SD_Init();			//建立通讯
 	LED=1;
-	delay();
-	FatFs_Init();
+	FatFs_Init();		//文件系统初始化
 }
-int file_create(unsigned long timestamp){
+short file_create(long timestamp){
 	sprintf(tchar,"%ld.txt",timestamp);
 	if (FR_OK == f_open(&fil, tchar, FA_OPEN_ALWAYS))
 	{
-		if (FR_OK == f_close(&fil))
-		{
-			return 0;
-		}
-		else
-		{
-			return 2;
-		}
+		if (FR_OK == f_close(&fil))return 0;
+		else return 2;
 	}
-	else
-	{
-		return 1;
-	}
+	else return 1;
 }
-void WRITE_SD(uint32_t a[4])
+int WRITE_SD(struct mea_res result[])
 {	unsigned short wr;
 	char strbuff[40]={"\0"};
-	sprintf(strbuff,"\r\n%d\t%d\t%d\t%d",a[0],a[1],a[2],a[3]);
-if (FR_OK == f_open(&fil, tchar, FA_WRITE))
-{
-	f_lseek(&fil,f_size(&fil)); //移动指针位置
-	f_write(&fil, (const void *)&(strbuff), sizeof(strbuff), &wr);	
-	close_file();//必须每次都加上close_file，否则只能记录最后一次单行数据
-}
-}
-int close_file(){
-	if (FR_OK == f_close(&fil))
-	{
-		return 0;
-	}
-	else
-	{
-		return 5;
-	}
+	int t;
+    for(t=0;t<1024;t++){
+    	sprintf(strbuff,"\r\n%d\t%d\t%d\t%d",result[t].ticktock,result[t].volt,result[t].current,result[t].counter);
+    	if (FR_OK == f_open(&fil, tchar, FA_WRITE))
+    	{
+    		f_lseek(&fil,f_size(&fil)); //移动指针位置
+    		f_write(&fil, (const void *)&(strbuff), sizeof(strbuff), &wr);	
+    	}
+    }
+    /*close file*/
+    if (FR_OK == f_close(&fil))return 0;
+    else return 5;
 }

@@ -13,7 +13,7 @@ uint8_t SD_send_command(uint8_t cmd, uint32_t arg);
 uint8_t SD_Reset(void);
 uint8_t read_block(uint32_t sector, uint8_t* buffer);
 uint8_t write_block(uint32_t sector, uint8_t* buffer);
-signed short test_file_system();
+short test_file_system();
 void FatFs_Init();
 void delay(void);
 uint8_t SD_write_multiple_block(uint32_t sector, uint8_t n, const uint8_t buffer[][512]);

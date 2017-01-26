@@ -1,21 +1,16 @@
-/*
- * WRITE_SD.h
- *
- *  Created on: Nov 27, 2016
- *      Author: Yulic_zhu
- */
 
+
+#include "MODULE_Init.h"
 #ifndef WRITE_SD_H_
 #define WRITE_SD_H_
-
-#define  LED	SIU.GPDO[76].B.PDO
+extern struct mea_res result[];
+#define  LED	SIU.GPDO[76].B.PDO	//¸Ä
 
 void SYSTEM_Init(void);
 void SIU_init(void);
 void delay(void);
 void init_SD_FatFs();
-void WRITE_SD(uint32_t a[4]);
-int close_file();
+int WRITE_SD(struct mea_res result[]);
 int READ_SD();
-int file_create(unsigned long timestamp);
+short file_create(long timestamp);
 #endif /* WRITE_SD_H_ */

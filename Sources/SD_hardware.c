@@ -1,22 +1,18 @@
-#include "SD.h"
 #include "MPC5604B.h"
 #include "includes.h"
 #include "ff.h"
+#include "SD_hardware.h"
 #include "WRITE_SD.h";
-extern uint8_t BUFFER[];
-signed short test_file_system();
 FATFS fatfs1;
 /*************************************************************/
 /*                      初始化SPI模块                        */
 /*************************************************************/
 void SPI_Init(void) 
 {
-
 	DSPI_0.MCR.R = 0x80013001;     //设置DSPI0为主模式，CS信号低有效，禁止FIFO
 	DSPI_0.CTAR[0].R = 0x3E0A7727; //配置CTAR[0]，设置为每帧数据为8位，高位在前，波特率为100KHz
 	DSPI_0.MCR.B.HALT = 0x0;	     //DSPI0处于运行状态
 }
-
 /*************************************************************/
 /*                    设置SPI时钟为4MHz                      */
 /*************************************************************/
@@ -26,7 +22,6 @@ void SPI_4M(void)
 	DSPI_0.CTAR[0].R = 0x3E087723; //配置CTAR[0]，设置为每帧数据为8位，高位在前，波特率为4MHz
 	DSPI_0.MCR.B.HALT = 0x0;	     //DSPI0处于运行状态
 }
-
 /*************************************************************/
 /*                        初始化SD卡                         */
 /*************************************************************/
@@ -45,16 +40,6 @@ void delay(void)
 	uint32_t j;
 	for(j=0;j<1000000;j++)
 	{}
-}
-
-/*************************************************************/
-/*                        清空缓冲区                         */
-/*************************************************************/
-void clear_buffer(uint8_t buffer[])
-{
-	uint16_t i;     
-	for(i=0;i<512;i++)	
-		*(buffer+i)=0;
 }
 
 /*************************************************************/
@@ -230,17 +215,16 @@ uint8_t write_block(uint32_t sector,uint8_t* buffer)
 void FatFs_Init(){
 	char g_sdcard_status=0;
 	TCHAR *path = "0:";
-	/* 挂载TF卡文件系统 */
+	/* 挂载TF卡文件系统，f_mount很必要 */
 	if (FR_OK == f_mount(&fatfs1, path, 1))
 	{g_sdcard_status=1;
 
-	/* 文件读写测试 */
-	//g_sdcard_status=WRITE_SD();
+	/* 文件读写测试,可省 */
 	g_sdcard_status=test_file_system();
 	}
 }
 
-signed short test_file_system()
+short test_file_system()
 {
 	FIL fil1, fil2, fil3;
 	TCHAR *tchar = "TEST.txt";
@@ -252,74 +236,33 @@ signed short test_file_system()
 
 	if (FR_OK == f_open(&fil1, tchar, FA_CREATE_ALWAYS))
 	{
-		if (FR_OK == f_close(&fil1))
-		{
-			
-		}
-		else
-		{
-			return 2;
-		}
+		if (FR_OK == f_close(&fil1));
+		else return 2;
 	}
-	else
-	{
-		return 1;
-	}
-	
+	else return 1;
 	if (FR_OK == f_open(&fil2, tchar, FA_WRITE))
 	{
 		if (FR_OK == f_write(&fil2, (const void *)&test_write_to_TFCard, sizeof(test_write_to_TFCard), &wr))
 		{
-			if (FR_OK == f_close(&fil2))
-			{
-				
-			}
-			else
-			{
-				return 5;
-			}
+			if(FR_OK == f_close(&fil2));
+			else return 5;
 		}
-		else
-		{
-			return 4;
-		}
+		else return 4;
 	}
-	else
-	{
-		return 3;
-	}
+	else return 3;
 
 	if (FR_OK == f_open(&fil3, tchar, FA_READ))
 	{
 		if (FR_OK == f_read(&fil3, (void *)&test_read_from_TFCard, sizeof(test_read_from_TFCard), &br))
 		{
-			if (FR_OK == f_close(&fil3))
-			{
-				
-			}
-			else
-			{
-				return 8;
-			}
+			if (FR_OK == f_close(&fil3));
+			else return 8;
 		}
-		else
-		{
-			return 7;
-		}
+		else return 7;
 	}
-	else
-	{
-		return 6;
-	}
-	
-	if (test_write_to_TFCard == test_read_from_TFCard)
-	{
-		return 0;
-	}
-	else
-	{
-		return 7;
-	}
+	else return 6;
+	if (test_write_to_TFCard == test_read_from_TFCard)return 0;
+	else return 7;
 }
 
 uint8_t SD_write_multiple_block(uint32_t sector, uint8_t n, const uint8_t buffer[][512])

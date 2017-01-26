@@ -1,4 +1,4 @@
-Sources/main_c.obj: D:\我的文档\Freescale\workplace\MotorTester\Sources\main.c \
+Sources/SD_hardware_c.obj: D:\我的文档\Freescale\workplace\MotorTester\Sources\SD_hardware.c \
 	D:\Freescale\CW\ MCU\ v10.6\MCU\PA_Support\ewl\EWL_C\include\lib_ewl.prefix \
 	D:\Freescale\CW\ MCU\ v10.6\MCU\PA_Support\ewl\EWL_C\include\common.prefix \
 	D:\Freescale\CW\ MCU\ v10.6\MCU\PA_Support\ewl\EWL_C\include\ewl_c_version.h \
@@ -13,5 +13,10 @@ Sources/main_c.obj: D:\我的文档\Freescale\workplace\MotorTester\Sources\main.c \
 	D:\Freescale\CW\ MCU\ v10.6\MCU\PA_Support\ewl\EWL_C\include\cstdint \
 	D:\Freescale\CW\ MCU\ v10.6\MCU\PA_Support\ewl\EWL_C\include\limits_api.h \
 	D:\Freescale\CW\ MCU\ v10.6\MCU\PA_Support\ewl\EWL_C\include\ewl_lib_ext1.h \
+	D:\我的文档\Freescale\workplace\MotorTester\Project_Headers\includes.h \
+	D:\我的文档\Freescale\workplace\MotorTester\Project_Headers\ff.h \
+	D:\我的文档\Freescale\workplace\MotorTester\Project_Headers\integer.h \
+	D:\我的文档\Freescale\workplace\MotorTester\Project_Headers\ffconf.h \
+	D:\我的文档\Freescale\workplace\MotorTester\Project_Headers\SD_hardware.h \
 	D:\我的文档\Freescale\workplace\MotorTester\Project_Headers\WRITE_SD.h \
 	D:\我的文档\Freescale\workplace\MotorTester\Project_Headers\MODULE_Init.h 
